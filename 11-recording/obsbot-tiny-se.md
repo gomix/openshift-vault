@@ -2,37 +2,28 @@
 
 * https://www.obsbot.com/obsbot-tiny-se-full-hd-webcam
 
-## Estado actual
-
-La webcam OBSBOT Tiny SE está funcionando correctamente en Fedora usando el stack estándar Linux UVC/V4L2.
-
----
-
-# Lo que ya funciona
-
-## Video UVC estándar
-
-La cámara es detectada como dispositivo UVC normal (`/dev/video*`), por lo que funciona con:
-
-- OBS Studio
-- Browsers
-- WebRTC
-- ffplay
-- mpv
-- cheese
-- v4l2-ctl
+## Current State
+* Webcam is working properly on Fedora using standard Linux stack UVC/V4L2.
+* Webcam detected as regular UVC device (`/dev/video*`), so it works with:
+	* OBS Studio
+	* Browsers
+	* WebRTC
+	* ffplay
+	* mpv
+	* cheese
+	* v4l2-ctl
 
 ---
 
 ## PTZ (Pan/Tilt/Zoom)
 
-Se validaron controles PTZ vía V4L2:
+PTZ control validate via V4L2:
 
 ```bash
 v4l2-ctl -d /dev/video0 --list-ctrls
 ```
 
-Controles detectados:
+Detected controls:
 
 ```text
 pan_absolute
@@ -41,79 +32,42 @@ focus_absolute
 exposure_time_absolute
 ```
 
-Esto confirma:
+Confirms:
 
-- Pan funcional
-- Tilt funcional
-- Focus manual funcional
-- Exposure manual funcional
+* Pan functional
+* Tilt functional
+* Focus manual functional
+* Exposure manual functional
 
 ---
 
 ## Gesture Control
 
-También se validó:
+Also validated:
 
-- Gestos funcionando
-- Activación de tracking mediante gestos
+- Gesture control working.
+- Enabling/disabling human tracking.
+- Enabling/disabling zooming (2x default).
+- Enabling dynamic zooming.
 
-Esto indica que parte de la lógica AI está implementada directamente en firmware.
-
----
-
-# Lo que NO está disponible actualmente
-
-## Aplicación Linux oficial
-
-No existe soporte Linux oficial completo para:
-
-- GUI de configuración
-- SDK Linux completo
-- Configuración avanzada de tracking
-- Presets desde aplicación oficial
-
-El soporte oficial de OBSBOT está enfocado principalmente en:
-
-- Windows
-- macOS
+We can conclude AI logic is working and implemented directly on firmware.
 
 ---
 
-# Hallazgo importante
+# What is not working or available
 
-El tracking AI sí funciona bajo Linux.
+## Official Linux Application
 
-Eso significa que:
-
-- La cámara puede seguir al usuario
-- Reacciona a gestos
-- No depende completamente del software propietario
-
-Esto es especialmente valioso en Fedora + Wayland.
+* Does not exist at all.
+* No SDK available.
+* Advanced tracking configuration.
+* Official OBSBOT support for Windows and macOS.
 
 ---
 
-# Gestos identificados
+# Useful Linux Tools
 
-## Activar tracking
-
-Normalmente usando gesto tipo “L” con la mano.
-
----
-
-## Repetir gesto
-
-Dependiendo del firmware:
-
-- pausa tracking
-- reactiva tracking
-- lock/unlock tracking
-
----
-
-# Herramientas útiles en Linux
-
-## Ver controles
+## Controls
 
 ```bash
 v4l2-ctl -d /dev/video0 --list-ctrls
@@ -121,7 +75,7 @@ v4l2-ctl -d /dev/video0 --list-ctrls
 
 ---
 
-## Exposure manual
+## Manual Exposure
 
 ```bash
 v4l2-ctl -d /dev/video0 \
@@ -130,7 +84,7 @@ v4l2-ctl -d /dev/video0 \
 
 ---
 
-## Ajustar exposure
+## Adjust Exposure
 
 ```bash
 v4l2-ctl -d /dev/video0 \
@@ -139,7 +93,7 @@ v4l2-ctl -d /dev/video0 \
 
 ---
 
-## Mover cámara
+## Moving the camera
 
 ### Pan
 
