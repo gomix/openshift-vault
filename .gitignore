@@ -1,3 +1,7 @@
+*.mp4
+*.mkv
+*.zip
+*.tar.gz
 .obsidian/workspace.json
 .obsidian/cache
 .logseq/bak
