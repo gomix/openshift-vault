@@ -1,3 +1,7 @@
+# OBSBOT Tiny SE Webcam
+
+* https://www.obsbot.com/obsbot-tiny-se-full-hd-webcam
+
 ## Estado actual
 
 La webcam OBSBOT Tiny SE está funcionando correctamente en Fedora usando el stack estándar Linux UVC/V4L2.
