@@ -1,6 +1,7 @@
 # OBSBOT Tiny SE Webcam
 
 * https://www.obsbot.com/obsbot-tiny-se-full-hd-webcam
+<img src="assets/images/obsbot-tiny-se.png" width="300">
 
 ## Current State
 * Webcam is working properly on Fedora using standard Linux stack UVC/V4L2.
