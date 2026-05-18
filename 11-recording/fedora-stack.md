@@ -2,7 +2,7 @@
 
 ## Cámara
 
-<img src="Attachments/images/obsbot-tiny-se.png" width="300">
+<img src="../Attachments/images/obsbot-tiny-se.png" width="300">
 
 ## Microphone
 
