@@ -1,6 +1,6 @@
 # Recording Fedora Stack
 
-## Cámara
+## Camera
 
 - OBSBOT Tiny SE
 <img src="../attachments/images/obsbot-tiny-se.png" width="300">
