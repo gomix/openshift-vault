@@ -2,8 +2,7 @@
 
 ## Cámara
 
-- OBSBOT Tiny SE
-  ![[obsbot-tiny-se.png|300]]
+<img src="Attachments/images/obsbot-tiny-se.png" width="300">
 
 ## Microphone
 
