@@ -5,5 +5,6 @@
   "propertiesInDocument": "hidden",
   "showUnsupportedFiles": true,
   "newFileLocation": "current",
-  "attachmentFolderPath": "attachments"
+  "attachmentFolderPath": "attachments",
+  "alwaysUpdateLinks": true
 }

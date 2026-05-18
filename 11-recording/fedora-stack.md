@@ -3,10 +3,12 @@
 ## Cámara
 
 - OBSBOT Tiny SE
+  ![[obsbot-tiny-se.png|300]]
 
 ## Microphone
 
-- RODE Mini USB
+- RODE NT USB Mini
+![[rode-nt-usb-mini.png|300]]
 
 ## Grabación / streaming
 
