@@ -13,4 +13,5 @@ It is closely associated with:
 - Future evolution of RHCOS management
 
 ## Useful Links
+- https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/machine_configuration
 - https://developers.redhat.com/articles/2026/05/19/debugging-image-mode-red-hat-openshift-420-practical-guide
