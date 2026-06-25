@@ -7,7 +7,3 @@ The **Web Terminal Operator** enables browser-based access to an OpenShift comma
 ![](../../14-assets/images/web_terminal_operator_in_tab.png)
 
 
-```
-tbd
-```
-
