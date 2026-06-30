@@ -34,8 +34,6 @@ apiVersion: "v1"
 kind: "Pod"
 metadata:
   name: "testpod"
-  labels:
-    name: "infinidat-testpod"
 spec:
   containers:
   - command:
@@ -50,6 +48,13 @@ spec:
   - name: "pvol"
     persistentVolumeClaim:
       claimName: "testclaim1"
+```
+
+Use `oc apply`
+
+```
+%> oc apply -f pod.yaml 
+pod/testpod created
 ```
 
 ## Troubleshooting
