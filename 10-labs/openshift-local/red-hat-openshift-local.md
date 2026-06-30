@@ -2,6 +2,20 @@
 * https://developers.redhat.com/products/openshift-local
 * https://crc.dev/docs/using/
 
+## Installation
+
+* Download link https://console.redhat.com/openshift/create/local
+
+![](../../attachments/crc-download.png)
+
+```
+%> tar -xvf crc-linux-amd64.tar.xz 
+crc-linux-2.61.0-amd64/
+crc-linux-2.61.0-amd64/LICENSE
+crc-linux-2.61.0-amd64/crc
+```
+
+`crc setup`
 ```bash title="crc"
  ./crc setup
 CRC is constantly improving and we would like to know more about usage (more details at https://developers.redhat.com/article/tool-data-collection)
@@ -337,4 +351,53 @@ Global Flags:
       --log-level string   log level (e.g. "debug | info | warn | error") (default "info")
 
 Use "crc config [command] --help" for more information about a command.
+```
+
+`crc cleanup`
+```
+%> bin/crc cleanup
+INFO Removing vsock configuration                 
+INFO Using root access: Removing udev rule in /etc/udev/rules.d/99-crc-vsock.rules 
+[sudo] password for ggomezsa: 
+INFO Using root access: Removing vsock module autoload file /etc/modules-load.d/vhost_vsock.conf 
+INFO Removing 'crc' network from libvirt          
+INFO Removing /etc/NetworkManager/dnsmasq.d/crc.conf file 
+INFO Removing /etc/NetworkManager/conf.d/crc-nm-dnsmasq.conf file 
+INFO Removing crc daemon systemd socket units     
+INFO Removing crc daemon systemd service          
+INFO Removing crc's virtual machine               
+INFO Removing crc libvirt storage pool            
+INFO Removing CRC manpages                        
+INFO Removing CRC Specific entries from user's known_hosts file 
+INFO Removing hosts file records added by CRC     
+INFO Removing pull secret from the keyring        
+INFO Removing older logs                          
+Cleanup finished
+```
+
+
+## Deploy other bundles (versions)
+You might want to try another version of OpenShift to test with. Default bundle is hardwired to the`crc` binary so you will need to specificy the bundle to be used or download an older version of `crc`, for bundles look at:
+* [mirror.openshift.com](https://mirror.openshift.com/pub/openshift-v4/clients/crc/bundles/openshift/)
+
+```
+%> bin/crc config set bundle ~/.crc/bundles/crc_libvirt_4.18.12_amd64.crcbundle 
+WARN Using crc_libvirt_4.18.12_amd64.crcbundle bundle, but crc_libvirt_4.21.14_amd64.crcbundle is expected for this release 
+Successfully configured bundle to /home/ggomezsa/.crc/bundles/crc_libvirt_4.18.12_amd64.crcbundle
+
+; or do it manually in your json config file
+%> cat crc.json 
+{
+  "bundle": "/home/ggomezsa/.crc/bundles/crc_libvirt_4.18.12_amd64.crcbundle",
+  "consent-telemetry": "no",
+  "cpus": 8,
+  "disk-size": 100,
+  "memory": 24576,
+  "pull-secret-file": "/home/ggomezsa/.crc/pull-secret.txt"
+}
+
+%>bin/crc setup
+WARN Using crc_libvirt_4.18.12_amd64.crcbundle bundle, but crc_libvirt_4.21.14_amd64.crcbundle is expected for this release 
+INFO Using bundle path /home/ggomezsa/.crc/bundles/crc_libvirt_4.18.12_amd64.crcbundle 
+...
 ```
