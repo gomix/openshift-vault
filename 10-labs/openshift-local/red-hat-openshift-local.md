@@ -6,7 +6,7 @@
 
 * Download link https://console.redhat.com/openshift/create/local
 
-![](../../attachments/crc-download.png)
+![](../../14-assets/images/crc-download.png)
 
 ```
 %> tar -xvf crc-linux-amd64.tar.xz 
@@ -197,8 +197,7 @@ NAME   STATUS   ROLES                         AGE   VERSION
 crc    Ready    control-plane,master,worker   12d   v1.34.6
 
 ```
-
-![[Pasted image 20260526155501.png|600]]
+![](../../14-assets/images/crc-cluster.png)
 
 ```bash
 %> bin/crc status
