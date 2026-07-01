@@ -1,11 +1,16 @@
+# Red OpenShift Local
 
+## TOC
+
+- [TOC](#toc)
+- [Links](#links)
 - [Installation](#installation)
 - [Configuring crc](#configuring-crc)
 	- [What can be configured](#what-can-be-configured)
 - [Deploy other bundles (versions)](#deploy-other-bundles-versions)
 - [Get credentials](#get-credentials)
 
-# Red OpenShift Local
+## Links
 * https://developers.redhat.com/products/openshift-local
 * https://crc.dev/docs/using/
 
