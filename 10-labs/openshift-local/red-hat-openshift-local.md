@@ -1,8 +1,5 @@
 # Red OpenShift Local
 
-## TOC
-
-- [TOC](#toc)
 - [Links](#links)
 - [Installation](#installation)
 - [Configuring crc](#configuring-crc)
