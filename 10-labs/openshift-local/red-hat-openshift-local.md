@@ -1,7 +1,10 @@
 
 
-```toc
-```
+- [[#Installation|Installation]]
+- [[#Configuring crc|Configuring crc]]
+	- [[#Configuring crc#What can be configured|What can be configured]]
+- [[#Deploy other bundles (versions)|Deploy other bundles (versions)]]
+- [[#Get credentials|Get credentials]]
 
 # Red OpenShift Local
 * https://developers.redhat.com/products/openshift-local
