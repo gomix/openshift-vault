@@ -8,5 +8,6 @@
   "obsidian-linter",
   "codeblock-customizer",
   "quickadd",
-  "templater-obsidian"
+  "templater-obsidian",
+  "obsidian-plugin-toc"
 ]
