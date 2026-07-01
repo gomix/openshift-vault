@@ -1,3 +1,8 @@
+
+
+```toc
+```
+
 # Red OpenShift Local
 * https://developers.redhat.com/products/openshift-local
 * https://crc.dev/docs/using/
