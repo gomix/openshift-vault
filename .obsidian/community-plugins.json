@@ -9,5 +9,6 @@
   "codeblock-customizer",
   "quickadd",
   "templater-obsidian",
-  "obsidian-plugin-toc"
+  "obsidian-plugin-toc",
+  "masking-as-md"
 ]

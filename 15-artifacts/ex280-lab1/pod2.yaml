@@ -1,0 +1,32 @@
+apiVersion: "v1"
+kind: "Pod"
+metadata:
+  name: "testpod"
+spec:
+  securityContext:
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+  - command:
+    - /bin/bash
+    name: "test-container"
+    image: "registry.redhat.io/rhel7/rhel-tools:latest"
+    tty: true
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+    volumeMounts:
+    - mountPath: "/mnt/pvol"
+      name: "pvol"
+  volumes:
+  - name: "pvol"
+    persistentVolumeClaim:
+      claimName: "entrenamiento-db-pvc"
+
