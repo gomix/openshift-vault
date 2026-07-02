@@ -18,22 +18,6 @@ The structure prioritizes:
 4. offline-first usage
 5. separation between stable knowledge and temporary investigations
 
-# Root Structure
-
-```text
-~/linux-vault
-│
-├── 00-inbox/
-├── 01-journal/
-├── 02-openshift-core/
-├── 03-openshift-virtualization/
-├── 04-openshift-ai/
-├── ...
-└── README.md
-````
-
----
-
 # [00-inbox/](00-inbox/README.md)
 
 Capture area.
@@ -51,3 +35,13 @@ The vault should help answer:
 - what is still active?
 
 The goal is operational usefulness, not building an infinite encyclopedia.
+
+Root structure still evolving, folders should represent the purpose of the information contained, no the type of files or product.
+
+Example:
+
+- runbooks → execute procedures.
+- labs → practice/train.
+- reference → quick query.
+- core → understand the platform.
+- platform-resources → document API resources.
