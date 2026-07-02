@@ -1,0 +1,1 @@
+Platform resources readme.
