@@ -6,6 +6,7 @@
 	- [What can be configured](#what-can-be-configured)
 - [Deploy other bundles (versions)](#deploy-other-bundles-versions)
 - [Get credentials](#get-credentials)
+- [Enabling Cluster Monitoring](#enabling-cluster-monitoring)
 
 ## Links
 * https://developers.redhat.com/products/openshift-local
