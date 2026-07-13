@@ -6,6 +6,7 @@
 	- [What can be configured](#what-can-be-configured)
 - [Deploy other bundles (versions)](#deploy-other-bundles-versions)
 - [Get credentials](#get-credentials)
+- [Enabling Cluster Monitoring](#enabling-cluster-monitoring)
 
 ## Links
 * https://developers.redhat.com/products/openshift-local
@@ -303,4 +304,32 @@ INFO Using bundle path /home/ggomezsa/.crc/bundles/crc_libvirt_4.18.12_amd64.crc
 $ crc console --credentials
 To login as a regular user, run 'oc login -u developer -p developer https://api.crc.testing:6443'.
 To login as an admin, run 'oc login -u kubeadmin -p iCrNH-hcLVS-kkFzE-b9Qca https://api.crc.testing:6443'
+```
+
+## Enabling Cluster Monitoring
+
+```
+$ crc config view
+- bundle                                : /home/ggomezsa/.crc/bundles/crc_libvirt_4.18.12_amd64.crcbundle
+- consent-telemetry                     : no
+- cpus                                  : 8
+- disk-size                             : 100
+- memory                                : 24576
+- pull-secret-file                      : /tmp/pull-secret.txt
+  
+$ crc config set enable-cluster-monitoring true
+Successfully configured enable-cluster-monitoring to true
+
+$ crc config view
+- bundle                                : /home/ggomezsa/.crc/bundles/crc_libvirt_4.18.12_amd64.crcbundle
+- consent-telemetry                     : no
+- cpus                                  : 8
+- disk-size                             : 100
+- enable-cluster-monitoring             : true                   <<<< HERE
+- memory                                : 24576
+- pull-secret-file                      : /tmp/pull-secret.txt
+  
+; restart crc
+$ crc stop
+$ crc start
 ```
