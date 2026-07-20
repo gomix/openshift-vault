@@ -4,6 +4,7 @@
 ## Definition
 
 An MCG-only deployment installs only the NooBaa Multi-Cloud Object Gateway component of OpenShift Data Foundation, without deploying the Ceph storage cluster. 
+
 In this architecture, NooBaa provides an S3-compatible object storage endpoint while using existing object storage backends (such as AWS S3, Azure Blob Storage, or external Ceph RGW) instead of local ODF-managed storage.
 
 ## Typical Use Cases
