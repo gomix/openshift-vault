@@ -29,6 +29,7 @@ spec:
             - --access-key=$(AWS_ACCESS_KEY_ID)
             - --secret-key=$(AWS_SECRET_ACCESS_KEY)
             - --bucket=$(BUCKET_NAME)
+            - --warp-client=warp-client:7761 
             - --duration=5m
             - --concurrent=16
             - --obj.size=4MiB
