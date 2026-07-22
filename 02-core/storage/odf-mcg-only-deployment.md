@@ -38,3 +38,11 @@ In this architecture, NooBaa provides an S3-compatible object storage endpoint w
       |                |               | Azure, etc.)   |
       +----------------+               +----------------+
 ```
+
+## Component roles
+
+- **Client Application**: Any workload consuming S3 storage (e.g., Quay, backup tools, custom applications).
+- **NooBaa MCG**: Provides a single S3-compatible endpoint, manages bucket placement, policies, namespace buckets, and abstracts the underlying object storage.
+- **Object Storage Backends**: One or more S3-compatible storage systems where the data is ultimately stored.
+
+Key characteristic: There is no Ceph StorageCluster deployed. No local block or file storage is provided by ODF—only the NooBaa gateway and management layer are running.
