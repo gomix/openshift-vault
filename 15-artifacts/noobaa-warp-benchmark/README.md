@@ -8,8 +8,10 @@ The suite includes manifests for:
 
 - Namespace and benchmark resources
 - ObjectBucketClaim (OBC)
-- ConfigMaps and Secrets
-- WARP benchmark Jobs
+- Warp PODs
+- Results PVC
+- Warp Client Service
+- Warp benchmark Jobs
 
 The benchmark Jobs cover multiple scenarios, including:
 
