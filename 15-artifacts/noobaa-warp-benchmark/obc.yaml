@@ -1,0 +1,10 @@
+apiVersion: objectbucket.io/v1alpha1
+kind: ObjectBucketClaim
+metadata:
+  name: noobaa-warp-benchmark
+  namespace: noobaa-benchmark
+spec:
+  bucketName: noobaa-warp-benchmark
+  storageClassName: openshift-storage.noobaa.io
+  additionalConfig:
+    bucketclass: noobaa-default-bucket-class
