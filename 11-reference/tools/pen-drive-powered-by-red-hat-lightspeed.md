@@ -31,3 +31,29 @@ The tool is designed for disconnected or security-sensitive environments where c
     
 
 > **Note:** At the time of writing, Pen Drive Powered by Red Hat Lightspeed is available as a **Technology Preview** feature.
+
+## How it works
+
+```
+                    +---------------------------+
+                    | Laptop / Bastion Host     |
+                    |                           |
+                    |  Podman                   |
+                    |  +---------------------+  |
+                    |  | Pen Drive          |  |
+                    |  | (container image)  |  |
+                    |  +---------------------+  |
+                    +-------------+-------------+
+                                  |
+                           kubeconfig / oc login
+                                  |
+                                  v
+                  +-------------------------------+
+                  | OpenShift Cluster             |
+                  |                               |
+                  | API Server                    |
+                  | Insights Operator             |
+                  | oc debug (when required)      |
+                  | must-gather plugins           |
+                  +-------------------------------+
+```
