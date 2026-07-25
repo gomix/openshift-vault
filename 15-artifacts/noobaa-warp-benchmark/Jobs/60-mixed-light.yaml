@@ -1,0 +1,90 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: 60-mixed-light
+  namespace: noobaa-benchmark
+spec:
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        app: noobaa-warp
+        test: 60-mixed-light
+    spec:
+      restartPolicy: Never
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+
+      containers:
+        - name: warp
+          image: minio/warp:latest
+          imagePullPolicy: Always
+
+          args:
+            - mixed
+            - --host=s3.openshift-storage.svc:443
+            - --tls
+            - --insecure
+            - --access-key=$(AWS_ACCESS_KEY_ID)
+            - --secret-key=$(AWS_SECRET_ACCESS_KEY)
+            - --bucket=$(BUCKET_NAME)
+            - --warp-client=warp-client:7761 
+            - --duration=10m
+            - --concurrent=8
+            - --objects=500
+            - --obj.size=1MiB
+            - --get-distrib=45
+            - --stat-distrib=30
+            - --put-distrib=15
+            - --delete-distrib=10
+            - --analyze.v
+            - --benchdata=/results/$(WARP_RUN_ID).csv.zst
+
+          env:
+            - name: WARP_RUN_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: noobaa-warp-benchmark
+                  key: AWS_ACCESS_KEY_ID
+          
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: noobaa-warp-benchmark
+                  key: AWS_SECRET_ACCESS_KEY
+          
+            - name: BUCKET_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: noobaa-warp-benchmark
+                  key: BUCKET_NAME
+
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: "2"
+              memory: 2Gi
+
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+
+          volumeMounts:
+            - name: results
+              mountPath: /results
+
+      volumes:
+        - name: results
+          persistentVolumeClaim:
+            claimName: warp-results

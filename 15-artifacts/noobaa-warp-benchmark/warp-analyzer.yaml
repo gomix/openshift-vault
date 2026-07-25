@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: warp-analyzer
+  namespace: noobaa-benchmark
+spec:
+  restartPolicy: Never
+
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+
+  containers:
+    - name: warp
+      image: minio/warp:latest
+      imagePullPolicy: IfNotPresent
+
+      # Mantiene el pod activo para ejecutar múltiples análisis.
+      args:
+        - client
+        - 127.0.0.1:7761
+
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: "1"
+          memory: 1Gi
+
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+
+      volumeMounts:
+        - name: results
+          mountPath: /results
+          readOnly: false
+
+  volumes:
+    - name: results
+      persistentVolumeClaim:
+        claimName: warp-results
