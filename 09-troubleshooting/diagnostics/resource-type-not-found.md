@@ -147,7 +147,7 @@ csr-vn2lt   148m    kubernetes.io/kube-apiserver-client-kubelet   system:service
 csr-wfdwl   71m     kubernetes.io/kube-apiserver-client-kubelet   system:serviceaccount:openshift-machine-config-operator:node-bootstrapper   <none>              Pending
 csr-zb95m   55m     kubernetes.io/kube-apiserver-client-kubelet   system:serviceaccount:openshift-machine-config-operator:node-bootstrapper   <none>              Pending
 
-; approve them all (carefull, u might to check them individually if in production)
+; approve them all (carefull, u might want to check them individually if in production)
 $ oc get csr --no-headers \
 | awk '$NF=="Pending"{print $1}' \
 | xargs -r oc adm certificate approve
