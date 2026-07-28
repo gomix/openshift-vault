@@ -110,8 +110,8 @@ $ oc logs -n openshift-apiserver \
 Defaulted container "openshift-apiserver" out of: openshift-apiserver, openshift-apiserver-check-endpoints, fix-audit-permissions (init)
 Defaulted container "openshift-apiserver" out of: openshift-apiserver, openshift-apiserver-check-endpoints, fix-audit-permissions (init)
 Defaulted container "openshift-apiserver" out of: openshift-apiserver, openshift-apiserver-check-endpoints, fix-audit-permissions (init)
-Error from server: Get "https://10.0.23.105:10250/containerLogs/openshift-apiserver/apiserver-67c894d8f-hh889/openshift-apiserver?sinceSeconds=1800&tailLines=10": remote error: tls: internal error < VOILA
-
+Error from server: Get "https://10.0.23.105:10250/containerLogs/openshift-apiserver/apiserver-67c894d8f-hh889/\
+                   openshift-apiserver?sinceSeconds=1800&tailLines=10": remote error: tls: internal error
 
 ; this error typically comes because pending csr, confirm
 $ oc get csr                                                   
