@@ -260,9 +260,9 @@ storage                                    4.18.25   True        False         F
 ; when done, fixed 
 $ oc get routes
 NAME                HOST/PORT                                                            PATH   SERVICES        PORT    TERMINATION     WILDCARD
-quay-quay           quay.apps.lab.sandbox502.opentlc.com                                        quay-quay-app   http    edge/Redirect   None
-quay-quay-builder   quay-quay-builder-quay-enterprise.apps.lab.sandbox2478.opentlc.com          quay-quay-app   grpc    edge/Redirect   None
-quay-test-route     quay-test-route-quay-enterprise.apps.lab.sandbox2478.opentlc.com            none            <all>                   None
+quay-quay           quay.apps.lab.example.com                                       quay-quay-app   http    edge/Redirect   None
+quay-quay-builder   quay-quay-builder-quay-enterprise.apps.lab.example.com         quay-quay-app   grpc    edge/Redirect   None
+quay-test-route     quay-test-route-quay-enterprise.apps.lab.example.com           none            <all>                   None
 ```
 
 ### Conclusion
