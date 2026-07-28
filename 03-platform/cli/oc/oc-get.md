@@ -1,3 +1,12 @@
+---
+tags:
+  - cli
+  - oc
+  - resources
+---
+
+# oc get
+
 Display one or many resources.
 
 ## Usage examples
