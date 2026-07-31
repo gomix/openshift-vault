@@ -2,7 +2,6 @@
 tags:
   - cli
   - oc
-  - resources
   - automation
 ---
 # oc wait
