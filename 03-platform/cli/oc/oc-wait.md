@@ -1,5 +1,5 @@
 ---
-￼tags:
+tags:
   - cli
   - oc
   - resources
