@@ -9,7 +9,7 @@ tags:
 
 Wait for a specific condition on one or many resources.
 
-Wait for all `ClusterOperator` to be available Available.
+#### Wait for all `ClusterOperator` to be available Available.
 
 ```
 %> oc wait co --all --for=condition=Available=True --timeout=10m
