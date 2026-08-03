@@ -1,3 +1,9 @@
+---
+tags:
+  - service-mesh
+  - must-gather
+  - troubleshooting
+---
 
 # Collecting OpenShift Service Mesh Must-Gather
 
