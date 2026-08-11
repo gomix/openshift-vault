@@ -5,13 +5,18 @@ metadata:
   namespace: noobaa-benchmark
 spec:
   backoffLimit: 0
+  ttlSecondsAfterFinished: 300
+
   template:
     metadata:
       labels:
         app: noobaa-warp
         test: 02-smoke-get-1m-c4
+
     spec:
       restartPolicy: Never
+      terminationGracePeriodSeconds: 60
+
       securityContext:
         seccompProfile:
           type: RuntimeDefault
@@ -21,39 +26,47 @@ spec:
           image: minio/warp:latest
           imagePullPolicy: Always
 
+          command:
+            - /bin/sh
+            - -c
+
           args:
-            - get
-            - --host=s3.openshift-storage.svc:443
-            - --tls
-            - --insecure
-            - --access-key=$(AWS_ACCESS_KEY_ID)
-            - --secret-key=$(AWS_SECRET_ACCESS_KEY)
-            - --bucket=$(BUCKET_NAME)
-            - --warp-client=warp-client:7761 
-            - --duration=1m
-            - --concurrent=4
-            - --objects=100
-            - --obj.size=1MiB
-            - --analyze.v
-            - --benchdata=/results/$(WARP_RUN_ID).csv.zst
+
+            - |
+              TIMESTAMP="$(date -u +%Y%m%dT%H%M%SZ)"
+              exec /warp get \
+                --host=s3.openshift-storage.svc:443 \
+                --tls \
+                --insecure \
+                --access-key="${AWS_ACCESS_KEY_ID}" \
+                --secret-key="${AWS_SECRET_ACCESS_KEY}" \
+                --bucket="${BUCKET_NAME}" \
+                --warp-client=warp-client:7761  \
+                --duration=1m \
+                --concurrent=4 \
+                --objects=100 \
+                --obj.size=1MiB \
+                --analyze.v \
+                --benchdata="/results/${TIMESTAMP}-${WARP_RUN_ID}"
+
           env:
             - name: WARP_RUN_ID
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
-          
+
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
                   name: noobaa-warp-benchmark
                   key: AWS_ACCESS_KEY_ID
-          
+
             - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   name: noobaa-warp-benchmark
                   key: AWS_SECRET_ACCESS_KEY
-          
+
             - name: BUCKET_NAME
               valueFrom:
                 configMapKeyRef:

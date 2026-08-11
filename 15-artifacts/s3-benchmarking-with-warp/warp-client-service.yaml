@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: warp-client
+  namespace: noobaa-benchmark
 spec:
   selector:
     app: warp-client

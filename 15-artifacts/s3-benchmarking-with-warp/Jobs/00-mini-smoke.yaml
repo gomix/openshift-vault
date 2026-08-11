@@ -26,27 +26,33 @@ spec:
           image: minio/warp:latest
           imagePullPolicy: Always
 
-          args:
-            - mixed
-            - --host=s3.openshift-storage.svc:443
-            - --tls
-            - --insecure
-            - --access-key=$(AWS_ACCESS_KEY_ID)
-            - --secret-key=$(AWS_SECRET_ACCESS_KEY)
-            - --bucket=$(BUCKET_NAME)
-            - --warp-client=warp-client:7761 
-            - --duration=1m
-            - --concurrent=2
-            - --rps-limit=2
-            - --objects=20
-            - --obj.size=256KiB
-            - --get-distrib=45
-            - --stat-distrib=30
-            - --put-distrib=15
-            - --delete-distrib=10
-            - --analyze.v
-            - --benchdata=/results/$(WARP_RUN_ID).csv.zst
+          command:
+            - /bin/sh
+            - -c
 
+          args:
+
+            - |
+              TIMESTAMP="$(date -u +%Y%m%dT%H%M%SZ)"
+              exec /warp mixed \
+                --host=s3.openshift-storage.svc:443 \
+                --tls \
+                --insecure \
+                --access-key="${AWS_ACCESS_KEY_ID}" \
+                --secret-key="${AWS_SECRET_ACCESS_KEY}" \
+                --bucket="${BUCKET_NAME}" \
+                --warp-client=warp-client:7761  \
+                --duration=1m \
+                --concurrent=2 \
+                --rps-limit=2 \
+                --objects=20 \
+                --obj.size=256KiB \
+                --get-distrib=45 \
+                --stat-distrib=30 \
+                --put-distrib=15 \
+                --delete-distrib=10 \
+                --analyze.v \
+                --benchdata="/results/${TIMESTAMP}-${WARP_RUN_ID}"
           env:
             - name: WARP_RUN_ID
               valueFrom:

@@ -15,71 +15,67 @@ spec:
       securityContext:
         seccompProfile:
           type: RuntimeDefault
-
       containers:
-        - name: warp
-          image: minio/warp:latest
-          imagePullPolicy: Always
-
-          args:
-            - list
-            - --host=s3.openshift-storage.svc:443
-            - --tls
-            - --insecure
-            - --access-key=$(AWS_ACCESS_KEY_ID)
-            - --secret-key=$(AWS_SECRET_ACCESS_KEY)
-            - --bucket=$(BUCKET_NAME)
-            - --warp-client=warp-client:7761 
-            - --duration=5m
-            - --concurrent=32
-            - --objects=500
-            - --obj.size=4MiB
-            - --analyze.v
-            - --benchdata=/results/$(WARP_RUN_ID).csv.zst
-          env:
-            - name: WARP_RUN_ID
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
-          
-            - name: AWS_ACCESS_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: noobaa-warp-benchmark
-                  key: AWS_ACCESS_KEY_ID
-          
-            - name: AWS_SECRET_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: noobaa-warp-benchmark
-                  key: AWS_SECRET_ACCESS_KEY
-          
-            - name: BUCKET_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: noobaa-warp-benchmark
-                  key: BUCKET_NAME
-
-          resources:
-            requests:
-              cpu: 250m
-              memory: 256Mi
-            limits:
-              cpu: "2"
-              memory: 2Gi
-
-          securityContext:
-            runAsNonRoot: true
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-
-          volumeMounts:
-            - name: results
-              mountPath: /results
-
-      volumes:
+      - name: warp
+        image: minio/warp:latest
+        imagePullPolicy: Always
+        env:
+        - name: WARP_RUN_ID
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: noobaa-warp-benchmark
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: noobaa-warp-benchmark
+              key: AWS_SECRET_ACCESS_KEY
+        - name: BUCKET_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: noobaa-warp-benchmark
+              key: BUCKET_NAME
+        resources:
+          requests:
+            cpu: 250m
+            memory: 256Mi
+          limits:
+            cpu: '2'
+            memory: 2Gi
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+        volumeMounts:
         - name: results
-          persistentVolumeClaim:
-            claimName: warp-results
+          mountPath: /results
+        command:
+        - /bin/sh
+        - -c
+        args:
+        - |
+          TIMESTAMP="$(date -u +%Y%m%dT%H%M%SZ)"
+          exec /warp list \
+            --host=s3.openshift-storage.svc:443 \
+            --tls \
+            --insecure \
+            --access-key="${AWS_ACCESS_KEY_ID}" \
+            --secret-key="${AWS_SECRET_ACCESS_KEY}" \
+            --bucket="${BUCKET_NAME}" \
+            --warp-client=warp-client:7761 \
+            --duration=5m \
+            --concurrent=32 \
+            --objects=500 \
+            --obj.size=4MiB \
+            --analyze.v \
+            --benchdata="/results/${TIMESTAMP}-${WARP_RUN_ID}"
+      volumes:
+      - name: results
+        persistentVolumeClaim:
+          claimName: warp-results

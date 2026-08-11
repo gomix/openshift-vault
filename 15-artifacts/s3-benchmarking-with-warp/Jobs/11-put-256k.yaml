@@ -21,20 +21,25 @@ spec:
           image: minio/warp:latest
           imagePullPolicy: Always
 
+          command:
+            - /bin/sh
+            - -c
           args:
-            - put
-            - --host=s3.openshift-storage.svc:443
-            - --tls
-            - --insecure
-            - --access-key=$(AWS_ACCESS_KEY_ID)
-            - --secret-key=$(AWS_SECRET_ACCESS_KEY)
-            - --bucket=$(BUCKET_NAME)
-            - --warp-client=warp-client:7761 
-            - --duration=5m
-            - --concurrent=16
-            - --obj.size=256KiB
-            - --analyze.v
-            - --benchdata=/results/$(WARP_RUN_ID).csv.zst
+            - |
+              TIMESTAMP="$(date -u +%Y%m%dT%H%M%SZ)"
+              exec /warp put \
+                --host=s3.openshift-storage.svc:443 \
+                --tls \
+                --insecure \
+                --access-key="${AWS_ACCESS_KEY_ID}" \
+                --secret-key="${AWS_SECRET_ACCESS_KEY}" \
+                --bucket="${BUCKET_NAME}" \
+                --warp-client=warp-client:7761  \
+                --duration=5m \
+                --concurrent=16 \
+                --obj.size=256KiB \
+                --analyze.v \
+                --benchdata="/results/${TIMESTAMP}-${WARP_RUN_ID}"
           env:
             - name: WARP_RUN_ID
               valueFrom:

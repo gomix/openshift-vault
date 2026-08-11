@@ -1,0 +1,12 @@
+    474 system:serviceaccount:openshift-monitoring:cluster-monitoring-operator
+    104 system:node:ip-10-0-20-252.eu-central-1.compute.internal
+     98 system:node:ip-10-0-38-95.eu-central-1.compute.internal
+     97 system:node:ip-10-0-79-220.eu-central-1.compute.internal
+     51 system:ovn-node:ip-10-0-20-252.eu-central-1.compute.internal
+     47 system:ovn-node:ip-10-0-79-220.eu-central-1.compute.internal
+     44 system:multus:ip-10-0-79-220.eu-central-1.compute.internal
+     43 system:ovn-node:ip-10-0-38-95.eu-central-1.compute.internal
+     42 system:multus:ip-10-0-20-252.eu-central-1.compute.internal
+     40 system:multus:ip-10-0-38-95.eu-central-1.compute.internal
+     38 system:serviceaccount:openshift-authentication-operator:authentication-operator
+      3 system:serviceaccount:openshift-machine-config-operator:node-bootstrapper
