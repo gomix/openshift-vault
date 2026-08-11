@@ -29,4 +29,4 @@ The benchmark suite was initially validated against NooBaa and includes workload
 
 ## Documentation
 
-See the accompanying technical note for the benchmark workflow, workload profiles, and result analysis.
+See [S3 Benchmarking with Warp](../../04-data-foundation/object-storage/s3-benchmarking-with-warp.md) for the benchmark workflow, workload profiles, and result analysis.
