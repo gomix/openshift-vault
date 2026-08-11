@@ -1,29 +1,32 @@
-# NooBaa WARP Benchmark Suite
+---
+tags:
+  - openshift
+  - object-storage
+  - s3
+  - benchmarking
+  - warp
+---
+# S3 Benchmarking with Warp
 
-This directory contains the Kubernetes manifests used to benchmark the S3 performance of Red Hat OpenShift Data Foundation (ODF) Multi-Cloud Gateway (NooBaa) using MinIO WARP.
+This directory contains the OpenShift manifests and supporting artifacts used to benchmark S3-compatible object storage using MinIO Warp.
+
+The benchmark suite was initially validated against NooBaa and includes workloads designed to approximate some of the I/O characteristics of a container registry such as Quay.
 
 ## Contents
 
-The suite includes manifests for:
+- Benchmark namespace and ObjectBucketClaim (OBC)
+- Warp client and service
+- Persistent storage for benchmark results
+- Warp analyzer
+- Benchmark Jobs covering:
+  - PUT and GET object-size sweeps
+  - Concurrency sweeps
+  - Metadata operations
+  - Multipart uploads
+  - Mixed workloads
+  - Stress tests
+  - Soak tests
 
-- Namespace and benchmark resources
-- ObjectBucketClaim (OBC)
-- Warp PODs
-- Results PVC
-- Warp Client Service
-- Warp benchmark Jobs
+## Documentation
 
-The benchmark Jobs cover multiple scenarios, including:
-
-- PUT
-- GET
-- MIXED
-- Multipart uploads
-- Stress tests
-- Soak tests
-
-## Usage
-
-Apply the manifests individually according to the benchmarking scenario you want to execute.
-
-See the accompanying runbook for the complete benchmarking procedure, environment preparation, and result analysis (WiP).
+See the accompanying technical note for the benchmark workflow, workload profiles, and result analysis.
