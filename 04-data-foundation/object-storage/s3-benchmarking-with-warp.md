@@ -77,6 +77,8 @@ from this note:
 
 `15-artifacts/s3-benchmarking-with-warp/`
 
+See the [benchmark artifacts](../../15-artifacts/s3-benchmarking-with-warp/README.md) 
+
 They include the namespace, ObjectBucketClaim, Warp client resources, benchmark Jobs, persistent storage for results, and resources used to
 analyze the generated benchmark data.
 
