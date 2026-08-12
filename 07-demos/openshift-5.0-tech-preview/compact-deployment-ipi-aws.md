@@ -16,9 +16,9 @@ tags:
 
 ## Downloadables
 
-Early Engineering Candidates of OpenShift 5.0 are available at:
+Early Engineering Candidates of OpenShift 5.0 are available to all customers with Red Hat accounts at:
 * https://console.redhat.com/openshift/install/multi/pre-release
-* No changes, select and download installer and cli tools.
+* No changes in the process, select and download installer and cli tools.
 
 ### Versions
 
