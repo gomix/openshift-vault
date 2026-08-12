@@ -9,7 +9,9 @@ tags:
 
 > [!NOTE]
 > This page documents test deployment of OpenShift Container Platform 5.0.0 Tech Preview. 
+> 
 > The goal is to explore the new major release, become familiar with the environment, and capture early observations during deployment and validation.
+> 
 > This is not official Red Hat documentation.
 
 ## Downloadables
