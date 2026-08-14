@@ -8,9 +8,11 @@ A Pod may occasionally remain stuck in the `Terminating` state longer than expec
 
 This usually happens when Kubernetes cannot complete the shutdown process due to finalizers, unavailable nodes, storage issues, or containers that do not terminate gracefully.
 
-## Example 1 : my cluster was sleeping
+# Example 1 : my new cluster was sleeping
 
-- My lab  cluster was sleeping, meaning they were turned off yesterday and now they are back on.
+- My new lab  cluster was sleeping, meaning they nodes were turned off yesterday to save money and now they are back on.
+
+## Gathering evidence
 
 ```
 %> oc get pod
@@ -44,7 +46,7 @@ null
 Fri Aug 14 08:56:29 AM UTC 2026
 ```
 
-### Analysis
+## Analysis
 
 Data:
 - `deletionTimestamp`: `08:35:57 UTC`
@@ -96,6 +98,14 @@ certificatesigningrequest.certificates.k8s.io/csr-zvn5t subject=O=system:nodes, 
 ; No node reboot observed
 ```
 
+## Root cause
+
+* This is a new cluster a provisioned yesterday.
+* CSRs from original ignition files expired after 24 hours.
+* Cluster shut down before renewals.
+
+## References
+* [platform-agnostic](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html-single/installing_on_any_platform/index?#installation-user-infra-generate-k8s-manifest-ignition_installing-platform-agnostic*\)
 
 
 
