@@ -16,7 +16,7 @@ tags:
 
 This note documents the migration from AWS **Classic Load Balancers (CLB)** to **Network Load Balancers (NLB)** in an OpenShift Container Platform 4.18.25 cluster deployed on AWS using IPI.
 
-The objective is to describe the required configuration changes, migration procedure, validation steps, and rollback considerations required to replace the existing CLBs while maintaining connectivity to the OpenShift API and application ingress endpoints.
+The objective is to describe the required configuration changes, migration procedure, validation steps, and rollback considerations required to replace the existing CLBs while maintaining connectivity to the application ingress endpoints.
 
 ## Motivation
 
@@ -156,3 +156,4 @@ RESULT=PASS
 > [!warning] 
 > - Scope: AWS IPI clusters using the default LoadBalancerService IngressController.
 > - This procedure has been tested on an AWS IPI cluster. UPI environments might require additional load balancer configuration depending on how ingress infrastructure is managed.
+> - Changing the load balancer can cause a temporary ingress outage while the new NLB is provisioned and DNS changes propagate.
