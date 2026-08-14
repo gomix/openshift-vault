@@ -105,7 +105,7 @@ certificatesigningrequest.certificates.k8s.io/csr-zvn5t subject=O=system:nodes, 
 * Cluster shut down before renewals.
 
 ## References
-* [platform-agnostic](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html-single/installing_on_any_platform/index?#installation-user-infra-generate-k8s-manifest-ignition_installing-platform-agnostic*\)
+* [Creating the Kubernetes manifest and Ignition config files](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html-single/installing_on_any_platform/index?#installation-user-infra-generate-k8s-manifest-ignition_installing-platform-agnostic)
 
 
 
