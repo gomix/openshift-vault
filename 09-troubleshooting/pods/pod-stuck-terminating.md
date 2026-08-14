@@ -100,7 +100,7 @@ certificatesigningrequest.certificates.k8s.io/csr-zvn5t subject=O=system:nodes, 
 
 ## Root cause
 
-* This is a new cluster a provisioned yesterday.
+* This is a new cluster i provisioned yesterday.
 * CSRs from original ignition files expired after 24 hours.
 * Cluster shut down before renewals.
 
