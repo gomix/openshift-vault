@@ -54,7 +54,7 @@ Data:
 	- No  finalizer holding the pod from termination.
 - node: `ip-10-0-80-255.eu-central-1.compute.internal`
 
- > [!note]Hypothesis 
+ > [!NOTE] Hypothesis 
  > There is something happening with the Kubernetes API.
  > Nodes were Ready.
  > Checked CSRs and found the culprit.
