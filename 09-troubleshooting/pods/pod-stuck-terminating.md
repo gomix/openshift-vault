@@ -55,9 +55,9 @@ Data:
 - node: `ip-10-0-80-255.eu-central-1.compute.internal`
 
  > [!NOTE] 
- > There is something happening with the Kubernetes API.
- > Nodes were Ready.
- > Checked CSRs and found the culprit.
+ > - There is something happening with the Kubernetes API.
+ > - Nodes were Ready.
+ > - Checked CSRs and found the culprit.
 
 ```
 %> oc get csr
