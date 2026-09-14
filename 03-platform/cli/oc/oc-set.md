@@ -54,10 +54,16 @@ deployment.apps/my-app updated
 
 ## Usage examples
 
+### Patching image in a running POD
+
+Locate the container name is key.
+
 ```bash
-$ oc set image deployment/myapp \
-  app=registry.example.com/test/image:tag
+%> oc get pod/broken -o json | jq -r .spec.containers[].name
+httpd
+
+%> oc set image pod/broken \
+   httpd=image-registry.openshift-image-registry.svc:5000/openshift/httpd
+pod/broken image updated
 ```
 
-
-## References
