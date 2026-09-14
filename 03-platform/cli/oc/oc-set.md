@@ -56,7 +56,7 @@ deployment.apps/my-app updated
 
 ### Patching image in a running POD
 
-Locate the container name is key.
+Locating the container name is key.
 
 ```bash
 %> oc get pod/broken -o json | jq -r .spec.containers[].name
